@@ -1,13 +1,35 @@
 //Moving Enemies
+var enemyMaker = function(){
+  this.x = 1150;
+  this.y = 750;
+}
 
-var data = [{'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':1150, 'y':750}, 
-{'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':1150, 'y':750},
-{'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':1150, 'y':750}];
+var data = [];
+
+for(var i=0; i<13; i++){
+  data.push(new enemyMaker())
+}
+
+var enemies = d3.select('svg').selectAll('image')
+    .data(data)
+    .enter()
+    .append('image')
+    .attr("xlink:href", "basketball.gif")
+    .attr("height", "50px")
+    .attr("width", "50px")
+
 
 var update = function(data){
-  d3.select('body').selectAll('.enemy')
-    .data(data)
-    .transition()
+  enemies
+  .attr('class', 'enemy')
+    .attr("x", function(d){
+      return d.x * Math.random()
+    })
+    .attr("y", function(d){
+      return d.y * Math.random()
+    })
+
+  enemies.transition()
     .duration(1500)
     .attr("x", function(d){
       return d.x * Math.random()
