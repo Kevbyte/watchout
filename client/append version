@@ -5,17 +5,26 @@ var data = [{'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':
 {'x':1150, 'y':750}, {'x':1150, 'y':750}, {'x':1150, 'y':750}];
 
 var update = function(data){
-  d3.select('body').selectAll('.enemy')
-    .data(data)
-    .transition()
-    .duration(1500)
-    .attr("x", function(d){
-      return d.x * Math.random()
-    })
-    .attr("y", function(d){
-      return d.y * Math.random()
-    })
-}; 
+  d3.select('body').selectAll('image').data(data).enter().append('image')
+  .transition()
+  .duration(1500)
+  .attr('x', function(d){return d.x*Math.random()})
+  .attr('y', function(d){return d.y*Math.random()})
+  .style("height", function(d){return 50 + "px"})
+  .style("width", function(d){return 50 + "px"})
+};
+// var update = function(data){
+//   d3.select('body').selectAll('.enemy')
+//     .data(data)
+//     .transition()
+//     .duration(1500)
+//     .attr("x", function(d){
+//       return d.x * Math.random()
+//     })
+//     .attr("y", function(d){
+//       return d.y * Math.random()
+//     })
+// }; 
 
 update(data);
 
@@ -41,19 +50,18 @@ var lebron = d3.select('body').selectAll('.player')
 //__________________________________________________________________________________________________________________
 //Collisions
 
-// var collision = function(){
-//   var enemyPos = d3.selectAll('.enemy').each(function(d){
-//     console.log(d3.select(this).attr('x'))});
-  
-//   // var playerPos = d3.selectAll('.player').each(function(d){
-//   //   return d
-//   // })
-// }
+var collision = function(){
+  var array = [];
 
-
-// setInterval(function(){
-//   collision()
-// }, 10500)
+  var enemyPos = d3.selectAll('.enemy').each(function(d){console.log(d.x)});
+  // var playerPos = d3.selectAll('.player').each(function(d){
+  //   return d
+  // })
+  // console.log(enemyPos);
+}
+setInterval(function(){
+  collision()
+}, 750)
 
 
 //__________________________________________________________________________________________________________________
@@ -68,5 +76,4 @@ var current = function(){
 setInterval(function(){
   current()
 }, 750)
-
 
