@@ -10,27 +10,45 @@ for(var i=0; i<13; i++){
   data.push(new enemyMaker())
 }
 
-var enemies = d3.select('svg').selectAll('image')
+//__________________________________________________________________________________________________________________
+//Drag Function
+
+var drag = d3.behavior.drag()  
+    .on('drag', function() { lebron.attr('x', d3.event.x)
+    .attr('y', d3.event.y); })
+
+//__________________________________________________________________________________________________________________
+//Define Player
+
+var lebron = d3.select('svg').selectAll('.player')
+    .data([{ 'x': 565, 'y': 365}])
+    .enter()
+    .append('image')
+    .attr('class', 'player')
+    .attr("xlink:href", "lbj.png")
+    .attr("height", "75px")
+    .attr("width", "75px")
+    .attr('x', function(d) { return d.x; })
+    .attr('y', function(d) { return d.y; })
+    .call(drag)
+
+//__________________________________________________________________________________________________________________
+//Define Enemies
+
+var enemies = d3.select('svg').selectAll('.enemy')
     .data(data)
     .enter()
     .append('image')
+    .attr('class', 'enemy')
     .attr("xlink:href", "basketball.gif")
     .attr("height", "50px")
     .attr("width", "50px")
 
-
+//__________________________________________________________________________________________________________________
+//Update  Enemies
 var update = function(data){
-  enemies
-  .attr('class', 'enemy')
-    .attr("x", function(d){
-      return d.x * Math.random()
-    })
-    .attr("y", function(d){
-      return d.y * Math.random()
-    })
-
   enemies.transition()
-    .duration(1500)
+    .duration(3000)
     .attr("x", function(d){
       return d.x * Math.random()
     })
@@ -43,22 +61,8 @@ update(data);
 
 setInterval(function(){
   update(data)
-}, 1500);
+}, 3000);
 
-//__________________________________________________________________________________________________________________
-//Draggable Player
-
-var drag = d3.behavior.drag()  
-  // .on('dragstart', function() { circle.style('fill', 'red'); })
-  .on('drag', function() { lebron.attr('x', d3.event.x)
-    .attr('y', d3.event.y); })
-  // .on('dragend', function() { circle.style('fill', 'black'); });
-
-var lebron = d3.select('body').selectAll('.player')  
-  .data([{ 'x': 565, 'y': 365}])
-  .attr('x', function(d) { return d.x; })
-  .attr('y', function(d) { return d.y; })
-  .call(drag)
 
 //__________________________________________________________________________________________________________________
 //Collisions
@@ -113,12 +117,12 @@ var coordinates = function(){
 
 setInterval(function(){
   coordinates()
-}, 150)
+}, 100)
 
 
 
 //__________________________________________________________________________________________________________________
-//Current Score
+//High Score + Current Score
 var highScore = 0;
 var currentCount = 0;
 
