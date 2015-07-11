@@ -41,32 +41,70 @@ var lebron = d3.select('body').selectAll('.player')
 //__________________________________________________________________________________________________________________
 //Collisions
 
-// var collision = function(){
-//   var enemyPos = d3.selectAll('.enemy').each(function(d){
-//     console.log(d3.select(this).attr('x'))});
+var colCount = 0;
+
+var coordinates = function(){
+
+  var enemyPosX = [];
+  var enemyPosY = [];
+  var playerPosX = d3.select('body').selectAll('.player').attr('x'); 
+  var playerPosY = d3.select('body').selectAll('.player').attr('y');
+
+  var enemyPos = d3.selectAll('.enemy').each(function(d){
+    enemyPosX.push(d3.select(this).attr('x'))});
+
+  var enemyPos = d3.selectAll('.enemy').each(function(d){
+    enemyPosY.push(d3.select(this).attr('y'))});
+
   
-//   // var playerPos = d3.selectAll('.player').each(function(d){
-//   //   return d
-//   // })
-// }
+  var collisions = function(){
+    
+    for(var i = 0; i < enemyPosX.length; i++){
+      if(enemyPosX[i] > playerPosX){
+        var a = enemyPosX[i] - playerPosX;
+      } else {
+        var a = playerPosX - enemyPosX[i];
+      }
+      if(enemyPosY[i] > playerPosY){
+        var b = enemyPosY[i] - playerPosY;
+      } else {
+        var b = playerPosY - enemyPosY[i];
+      }
+      var c = Math.sqrt((a*a)+(b*b));
+      if(c < 50){
+        colCount++;
+        console.log(colCount)
+        d3.select('.collisions').selectAll('span')
+        .text(colCount)
+        if(currentCount>highScore){
+          highScore = currentCount;
+          d3.select('.high').selectAll('span')
+          .text(highScore)
+        }
+        currentCount=0; 
+      }
+    }
+  }
+  collisions();
 
+}
 
-// setInterval(function(){
-//   collision()
-// }, 10500)
+setInterval(function(){
+  coordinates()
+}, 150)
+
 
 
 //__________________________________________________________________________________________________________________
 //Current Score
-var count = 0
+var highScore = 0;
+var currentCount = 0;
 
 var current = function(){
   d3.select('.current').selectAll('span')
-    .text(count++)
+    .text(currentCount++)
 }
 
 setInterval(function(){
   current()
-}, 750)
-
-
+}, 150)

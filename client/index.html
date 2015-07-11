@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel='stylesheet' type='css' href='styles.css'>
-  </head>
-  <body>
-    <div class="container">
-      <svg width = "1200" height = "800">
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="enemy" xlink:href="basketball.gif"  height="50px" width="50px"/>
-        <image class="player" xlink:href="lbj.png"  height="75px" width="75px"/>
-      </svg>
-      <div class="scoreboard">
-        <!-- Modify the scoreboard when important events occur in your game! -->
-        <div class="high">High score: <span>0</span></div>
-        <div class="current">Current score: <span>0</span></div>
-        <div class="collisions">Collisions: <span>0</span></div>
-      </div>
-    </div>
 
+<head>
+    <link rel='stylesheet' type='css' href='styles.css'>
+    <link href='http://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <center>
+        <div class="scoreboard">
+            <!-- Modify the scoreboard when important events occur in your game! -->
+            <div class="high">High score: <span>0</span></div>
+            <div class="current">Current score: <span>0</span></div>
+            <div class="collisions">Collisions: <span>0</span></div>
+        </div>
+    </center>
+    <div class="container">
+        <svg width="1200" height="800">
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="enemy" xlink:href="basketball.gif" height="50px" width="50px" />
+            <image class="player" xlink:href="lbj.png" height="75px" width="75px" />
+        </svg>
+    </div>
     <script src="lib/d3.js" charset="utf-8"></script>
     <script src='watchout.js'></script>
-  </body>
+</body>
+
 </html>
